@@ -7,16 +7,11 @@
 class Human : public Player {
     private:
         std::string name;
-        char move;
 
     public:
-        Human();
         Human(std::string name);
         char makeMove();
-        char getMove();
-        void setMove();
-        std::string getName()
-
+        std::string getName();
 };
 
 #endif

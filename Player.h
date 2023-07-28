@@ -3,8 +3,11 @@
 #include <string>
 
 class Player {
-    virtual char makeMove() = 0;
-    virtual std::string getName() = 0;
-};
+    private:
+        std::string name;
+    public:
+        virtual char makeMove() = 0;
+        virtual std::string getName();
+    };
 
 #endif
