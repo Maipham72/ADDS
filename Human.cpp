@@ -2,7 +2,9 @@
 #include "Human.h"
 #include <string>
 
-Human::Human() {}
+Human::Human() {
+    name = "Human";
+}
 
 Human::Human(std::string name): name(name) {}
 
