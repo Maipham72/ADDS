@@ -9,6 +9,7 @@ class Human : public Player {
         std::string name;
 
     public:
+        Human();
         Human(std::string name);
         char makeMove();
         std::string getName();

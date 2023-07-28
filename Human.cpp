@@ -2,12 +2,13 @@
 #include "Human.h"
 #include <string>
 
+Human::Human() {}
+
 Human::Human(std::string name): name(name) {}
 
 std::string Human::getName() {
     return name;
 }
-
 
 char Human::makeMove() {
     char move;
