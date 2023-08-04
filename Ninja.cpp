@@ -3,6 +3,6 @@
 Ninja::Ninja() : Move("Ninja") {}
 
 bool Ninja::winCondition(Move* otherMove) {
-  return otherMove->getName() == "Pirate";
-  return otherMove->getName() == "Zombie"; 
+  std::string otherName = otherMove->getName();
+  return otherName == "Pirate" || otherName == "Zombie";
 }

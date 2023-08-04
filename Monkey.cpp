@@ -3,6 +3,6 @@
 Monkey::Monkey(): Move("Monkey") {}
 
 bool Monkey::winCondition(Move* otherMove) {
-  return otherMove->getName() == "Ninja";
-  return otherMove->getName() == "Robot";
+  std::string otherName = otherMove->getName();
+  return otherName == "Ninja" || otherName == "Robot";
 }

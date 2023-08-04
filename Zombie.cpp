@@ -3,6 +3,6 @@
 Zombie::Zombie(): Move("Zombie") {}
 
 bool Zombie::winCondition(Move* otherMove) {
-  return otherMove->getName() == "Pirate";
-  return otherMove->getName() == "Monkey";
+  std::string otherName = otherMove->getName();
+  return otherName == "Pirate" || otherName == "Monkey";
 }

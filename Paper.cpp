@@ -3,5 +3,6 @@
 Paper::Paper(): Move("Paper") {}
 
 bool Paper::winCondition(Move* otherMove) {
-  return otherMove->getName() == "Rock";
+  std::string otherName = otherMove->getName();
+  return otherName == "Rock";
 }
