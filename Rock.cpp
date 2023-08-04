@@ -1,7 +1,7 @@
-#include "Rock"
+#include "Rock.h"
 
-Rock::Rock() {}
+Rock::Rock(): Move("Rock") {}
 
-void Rock::rockOpponent (Move* player1Move, Move* player2Move) {
-    
+bool Rock::winCondition(Move* otherMove) {
+  return otherMove->getName() == "Scissors";
 }

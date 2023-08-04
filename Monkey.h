@@ -1,10 +1,10 @@
-#ifndef ROCK_H
-#define ROCK_H
+#ifndef MONKEY_H
+#define MONKEY_H
 #include "Move.h"
 
-class Rock : public Move {
+class Monkey : public Move {
     public:
-        Rock();
+        Monkey();
         bool winCondition(Move* otherMove);
 };
 #endif

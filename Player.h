@@ -1,13 +1,15 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include <string>
+#include "Move.h"
 
 class Player {
     private:
         std::string name;
     public:
-        Move* makeMove() = 0;
-        std::string getName() = 0;
+        virtual Move* makeMove() = 0;
+        virtual std::string getName() = 0;
+        
 };
 
 #endif
