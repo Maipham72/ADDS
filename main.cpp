@@ -8,7 +8,7 @@ int main () {
   Referee referree;
   Human myname("Mei");
   Computer computer;
-std::vector<Player*> players;
+    std::vector<Player*> players;
   players.push_back(&myname);
   players.push_back(&computer);
 
@@ -25,7 +25,6 @@ std::vector<Player*> players;
       std::cout << player1->getName() << " Wins." << std::endl;
     };
   }
-
 
   return 0;
 }
