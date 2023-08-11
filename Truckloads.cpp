@@ -1,9 +1,12 @@
 #include "Truckloads.h"
+#include <cmath>
 
 int Truckloads::numTrucks(int numCrates, int loadSize) {
     if (numCrates <= loadSize) {
         return 1;
     }
+    int left = floor(numCrates/2);
+    int right = numCrates - left;
 
-    return numTrucks(floor(numCrates/2) + ceil(numCrates/2))
+    return numTrucks(left, loadSize) + numTrucks(right,loadSize);
 }
