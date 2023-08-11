@@ -11,9 +11,9 @@ int Reverser::reverseDigit(int value) {
     static int temp = 1;
     
     if (value > 0) {
-        temp = value%10;
-        reversed = reversed*10 + temp;
         reverseDigit(value/10);
+        reversed = reversed + (value%10)*temp;
+        temp = temp*10;
     }
 
     return reversed;
