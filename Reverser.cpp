@@ -8,7 +8,7 @@ int Reverser::reverseDigit(int value) {
     } 
 
     static int reversed = 0;
-    static int temp;
+    static int temp = 1;
     
     if (value > 0) {
         temp = value%10;
