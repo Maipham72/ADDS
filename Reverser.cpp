@@ -1,22 +1,20 @@
 #include "Reverser.h"
-#include <vector>
-#include <iostream>
+
 
 int Reverser::reverseDigit(int value) {
     if (value <= 0) {
         return -1;
-    } 
-
-    static int reversed = 0;
-    static int temp = 1;
-    
-    if (value > 0) {
-        reverseDigit(value/10);
-        reversed = reversed + (value%10)*temp;
-        temp = temp*10;
+    } else if (value < 10) {
+        return value;
     }
 
-    return reversed;
+    std::string number = std::to_string(value);
+
+    char last_char = number.back();
+    std::string reversing = number.substr(0,number.length() - 1);
+
+    return stoi(last_char + reverseString(reversing));
+
 }
 
 std::string Reverser::reverseString(std::string characters) {
