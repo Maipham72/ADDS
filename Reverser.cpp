@@ -8,19 +8,19 @@ int Reverser::reverseDigit(int value) {
     } 
 
     static int reversed = 0;
-    static int temp = 1;
+    static int temp;
     
     if (value > 0) {
+        temp = value%10;
+        reversed = reversed*10 + temp;
         reverseDigit(value/10);
-        reversed = reversed + (value%10) *temp;
-        temp *= 10;
     }
 
     return reversed;
 }
 
 std::string Reverser::reverseString(std::string characters) {
-    
+
     if (characters.length() <= 0) {
         return "";
     }

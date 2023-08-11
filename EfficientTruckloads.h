@@ -1,9 +1,9 @@
-#ifndef EFFCIENTTRUCKLOADS_H
-#define EFFCIENTTRUCKLOADS_H
+#ifndef EFFICIENTTRUCKLOADS_H
+#define EFFICIENTTRUCKLOADS_H
 
 class EfficientTruckloads {
-    public:
-    int numTrucks(int numCrates, int loadSize, int acc);
+  public:
+    int numTrucks(int numCrates, int loadSize);
 };
 
 #endif
