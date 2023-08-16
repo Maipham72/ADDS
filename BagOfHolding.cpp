@@ -1,10 +1,11 @@
 #include "BagOfHolding.h"
 
 BagOfHolding::BagOfHolding() {
-    srand(time(NULL));
+    // int ranNum = srand(time(nullptr));
+    // std::string thing = std::to_string(ranNum);
 }
 
-void BagOfHolding::addItem(const Bags& items) {
+void BagOfHolding::addItem(std::string items) {
     bag_item.push_back(items);
 }
 
