@@ -34,8 +34,8 @@ vector<int> Finder::findSubstrings(string s1, string s2) {
   vector<int> result;
 
   vector<int> s2prefix(s2.size(), 0);
-  int j = 0;
-  for (int i = 1; i < s2.size(); i++) {
+  size_t j = 0;
+  for (size_t i = 1; i < s2.size(); i++) {
     if (s2[i] == s2[j]) {
       j++;
       s2prefix[i] = j;
@@ -45,7 +45,7 @@ vector<int> Finder::findSubstrings(string s1, string s2) {
     }
   }
 
-  int i = 0;
+  size_t i = 0;
   while (i < s1.size()) {
     if (s1[i] == s2[j]) {
       i++;
