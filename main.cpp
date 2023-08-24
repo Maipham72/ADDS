@@ -10,6 +10,7 @@ int main () {
 
   for (int i = 0; i < result.size(); i++) {
     std::cout << result[i] << " " << std::endl;
+    std::cout.flush();
   }
 
   return 0;
