@@ -29,12 +29,14 @@ int main() {
 
   RecursiveBinarySearch binarySearch;
 
-  //bool found = binarySearch.search(sortedList,1);
-  //int size = sortedList.size();
-
   bool found = binarySearch.search(list, 1);
-  std::cout << (found ? "true" : "false") << " ";
 
+  if (found == true) {
+    std::cout << "true" << " ";
+  } else {
+    std::cout << "false" << " ";
+  }
+ 
   for (int num : list) {
     std::cout << num << " ";
   }
