@@ -6,7 +6,7 @@
 #include "Sort.h"
 
 int main() {
-  std::vector<int> list{1,3,5,4,-5,100,7777,2014};
+  std::vector<int> list{-5,-8,-4,-2,-1};
 
   // QuickSort sorting;
   // std::vector<int> sortedList = sorting.sort(list);
