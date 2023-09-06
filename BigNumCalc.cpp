@@ -120,12 +120,17 @@ std::list<int> BigNumCalc::mul(std::list<int> num1, std::list<int> num2) {
     return multiply;
   }
 
-  for (auto it1 = num1.rbegin(); it1 != num1.rend(); it1++) {
-    int digit1 = *it1;
+  for (int digit1 : num1) {
+    //int digit1 = *it1;
     int product = digit1*digit2 + carry;
-    multiply.push_front(product %10);
     carry = product/10;
+    multiply.push_front(product %10);
   }
+
+  while (carry > 0) {
+    multiply.push_back(carry % 10);
+    carry = carry/10;
+    }
 
   while (multiply.empty() != false && multiply.front() == 0) {
     multiply.pop_front();
