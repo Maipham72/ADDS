@@ -53,24 +53,16 @@ std::list<int> BigNumCalc::add(std::list<int> num1, std::list<int> num2) {
     add.push_front(carry);
   }
 
+  while(!add.empty() && add.front() == 0) {
+    add.pop_back();
+  }
+
+  if (add.empty()) {
+    add.push_back(0);
+  }
+
   return add;
 
-  // while (!num1.empty() || !num2.empty()) {
-  //   int sum = carry;
-  //   if (!num1.empty()) {
-  //   sum = sum + num1.back();
-  //   num1.pop_back();
-  //   }
-  //   if (!num2.empty()) {
-  //     sum = sum + num2.back();
-  //     num2.pop_back();
-  //   }
-
-  //   carry = sum/10;
-  //   add.push_front(sum%10);
-  // }
-
-  // return add;
 }
 
 std::list<int> BigNumCalc::sub(std::list<int> num1, std::list<int> num2) {
@@ -110,41 +102,6 @@ std::list<int> BigNumCalc::sub(std::list<int> num1, std::list<int> num2) {
   }
 
   return subtract;
-
-
-  // while (num1.empty() != false || num2.empty() != false) {
-  //   int x = carry;
-
-  //   if (num1.empty() != false) {
-  //     x = x + num1.back();
-  //     num1.pop_back();
-  //   }
-
-  //   int y = 0;
-  //   if (num2.empty() != false) {
-  //     y = y + num2.back();
-  //     num2.pop_back();
-  //   }
-
-  //   if (x<y) {
-  //     x = x+10;
-  //     carry = 1;
-  //   } else {
-  //     carry = 0;
-  //   }
-
-  //   subtract.push_front(x-y);
-  // }
-
-  // while (subtract.empty() != false && subtract.front() == 0) {
-  //   subtract.pop_front();
-  // }
-
-  // if (subtract.empty()) {
-  //   subtract.push_back(0);
-  // }
-
-  // return subtract;
 }
 
 std::list<int> BigNumCalc::mul(std::list<int> num1, std::list<int> num2) {
