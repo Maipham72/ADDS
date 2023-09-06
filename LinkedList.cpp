@@ -59,7 +59,7 @@ bool LinkedList::deletePosition(int pos) {
   } else {
     Node* current = head;
     int count = 1;
-    while (current != nullptr && pos < count) {
+    while (current->getLink() != nullptr && count < pos - 1) {
       current = current->getLink();
       count++;
     }
@@ -81,7 +81,7 @@ int LinkedList::get(int pos) {
 
   Node* currNode = head;
   int count = 1;
-  while (currNode != nullptr && pos < count) {
+  while (currNode != nullptr && pos > count) {
     currNode = currNode->getLink();
     count++;
   }
