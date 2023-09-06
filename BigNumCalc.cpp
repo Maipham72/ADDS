@@ -1,8 +1,8 @@
 #include "BigNumCalc.h"
 
-bigNumCalc::bigNumCalc() {}
+BigNumCalc::BigNumCalc() {}
 
-std::list<int> bigNumCalc::buildBigNum(std::string numString) {
+std::list<int> BigNumCalc::buildBigNum(std::string numString) {
   std::list<int> numList;
   bool zero = true;
   
@@ -23,7 +23,7 @@ std::list<int> bigNumCalc::buildBigNum(std::string numString) {
   return numList;
 }
 
-std::list<int> bigNumCalc::add(std::list<int> num1, std::list<int> num2) {
+std::list<int> BigNumCalc::add(std::list<int> num1, std::list<int> num2) {
   std::list<int> add;
   int carry = 0;
   int sum = 0;
@@ -46,7 +46,7 @@ std::list<int> bigNumCalc::add(std::list<int> num1, std::list<int> num2) {
   return add;
 }
 
-std::list<int> bigNumCalc::sub(std::list<int> num1, std::list<int> num2) {
+std::list<int> BigNumCalc::sub(std::list<int> num1, std::list<int> num2) {
   std::list<int> subtract;
   int carry = 0;
 
@@ -120,7 +120,7 @@ std::list<int> bigNumCalc::sub(std::list<int> num1, std::list<int> num2) {
   // return subtract;
 }
 
-std::list<int> bigNumCalc::mul(std::list<int> num1, std::list<int> num2) {
+std::list<int> BigNumCalc::mul(std::list<int> num1, std::list<int> num2) {
   std::list<int> multiply;
   int carry = 0;
 

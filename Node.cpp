@@ -1,7 +1,7 @@
 #include "Node.h"
 
-Node::Node(int data) {
-  data = this->data;
+Node::Node(int newData) {
+  data = newData;
   link = nullptr;
 }
 

@@ -7,7 +7,7 @@ class Node {
     Node* link;
   
   public:
-    Node(int data);
+    Node(int newData);
     int getData();
     Node* getLink();
     void setLink(Node* newLink);
