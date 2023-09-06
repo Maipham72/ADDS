@@ -4,23 +4,29 @@ BigNumCalc::BigNumCalc() {}
 
 std::list<int> BigNumCalc::buildBigNum(std::string numString) {
   std::list<int> numList;
-  bool zero = true;
-  
-  for (int i = 0; i< numString.length(); i++) {
-    if (numString[i] != '0') {
-      zero = false;
-    }
 
-    if (!zero) {
-      numList.push_back(numString[i] - '0');
-    }
-  }
-
-  if (numList.empty()) {
-    numList.push_back(0);
+  for (int i = 0; i< numString.size(); i++) {
+    numList.push_back(numString[i] - '0');
   }
 
   return numList;
+  // bool zero = true;
+  
+  // for (int i = 0; i< numString.length(); i++) {
+  //   if (numString[i] != '0') {
+  //     zero = false;
+  //   }
+
+  //   if (!zero) {
+  //     numList.push_back(numString[i] - '0');
+  //   }
+  // }
+
+  // if (numList.empty()) {
+  //   numList.push_back(0);
+  // }
+
+  // return numList;
 }
 
 std::list<int> BigNumCalc::add(std::list<int> num1, std::list<int> num2) {
