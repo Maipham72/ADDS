@@ -171,6 +171,7 @@ std::list<int> BigNumCalc::sub(std::list<int> num1, std::list<int> num2) {
 // }
 
 std::list<int> BigNumCalc::mul(std::list<int> num1, std::list<int> num2) {
+  std::list<int> product;
 
   std::string myNum1;
   for (int num :num1) {
@@ -182,45 +183,45 @@ std::list<int> BigNumCalc::mul(std::list<int> num1, std::list<int> num2) {
     myNum2 += std::to_string(num);
   }
 
+  if (myNum1 == "0" || myNum2 == "0") {
+    product.push_back(0);
+    return product;
+  }
+
   int len1 = num1.size();
   int len2 = num2.size();
 
-  std::vector<int> res(len1 + len2, 0);
+  std::string res(len1 + len2, 0);
 
-  int i_n1 = 0;
-  int i_n2 =0;
+  // int i_n1 = 0;
+  // int i_n2 =0;
 
   for (int i=len1-1;i>=0;i--) {
-    int carry = 0;
-    int n1 = myNum1[i] - '0';
-    i_n2=0;
+    // int carry = 0;
+    // int n1 = myNum1[i] - '0';
+    // i_n2=0;
     for (int j = len2-1; j>=0;j--) {
-      int n2 = myNum2[j] - '0';
+      int n = (myNum1[i] - '0') * (myNum2[j] - '0') + res[i+j+1];
+      res[i+j+1] = n%10;
+      res[i+j] += n/10;
 
-      int sum = n1*n2 + res[i_n1 +i_n2] + carry;
-      carry = sum/10;
-      res[i_n1 + i_n2] = sum%10;
-      i_n2++;
+      // int sum = n1*n2 + res[i_n1 +i_n2] + carry;
+      // carry = sum/10;
+      // res[i_n1 + i_n2] = sum%10;
+      // i_n2++;
     }
-
-    if (carry >0) {
-      res[i_n1 + i_n2] += carry;
-    }
-    i_n1++;
   }
-  int i = res.size() -1;
-  while (i>= 0 && res[i] == 0) {
-    i--;
+  for (int i =0; i< res.size();i++) {
+    res[i] += '0';
   }
 
-  std::string s = "";
-  while (i>=0) {
-    s += std::to_string(res[i--]);
+  if (res[0] == '0') {
+    res.substr(1);
+    product = buildBigNum(res);
+    return product;
   }
 
-  std::list<int> product = buildBigNum(s);
   return product;
-
 
   // std::list<int> multiply;
   // int carry = 0;
