@@ -33,7 +33,7 @@ std::list<int> BigNumCalc::buildBigNum(std::string numString) {
 
 std::list<int> BigNumCalc::add(std::list<int> num1, std::list<int> num2) {
   std::list<int> add;
-  int carry = 0;
+  long signed carry = 0;
 
   while (num1.size() < num2.size()) {
     num1.push_front(0);
@@ -50,7 +50,7 @@ std::list<int> BigNumCalc::add(std::list<int> num1, std::list<int> num2) {
     int digit1 = *i1;
     int digit2 = *i2;
 
-    int sum = digit1 + digit2 + carry;
+    long signed sum = digit1 + digit2 + carry;
     carry = sum / 10;
     add.push_front(sum % 10);
     i1++;
@@ -125,140 +125,97 @@ std::list<int> BigNumCalc::sub(std::list<int> num1, std::list<int> num2) {
 
   }
 
-  // std::list<int> subtract;
-
-  // if (num2.size() < num1.size() ||
-  //     (num2.size() == num1.size() && num2 < num1)) {
-  //   subtract.push_back(0);
-  //   return subtract;
-  // }
-
-  // int carry = 0;
-
-  // while(num1.size() > num2.size()) {
-  //   num2.push_front(0);
-  // }
-  // auto it1 = num1.rbegin();
-  // auto it2 = num2.rbegin();
-
-  // while (it1 != num1.rend()) {
-  //   int digit1 = *it1;
-  //   int digit2 = *it2;
-
-  //   int diff = digit1 - digit2 - carry;
-
-  //   if(diff < 0) {
-  //     diff += 10;
-  //     carry = 1;
-  //   } else {
-  //     carry = 0;
-  //   }
-
-  //   subtract.push_front(diff);
-  //   it1++;
-  //   it2++;
-  // }
-
-  // while(!subtract.empty() && subtract.front() == 0) {
-  //   subtract.pop_front();
-  // }
-
-  // if (subtract.empty()) {
-  //   subtract.push_back(0);
-  // }
-
-  // return subtract;
-// }
-
 std::list<int> BigNumCalc::mul(std::list<int> num1, std::list<int> num2) {
-  std::list<int> product;
 
-  std::string myNum1;
-  for (int num :num1) {
-    myNum1 += std::to_string(num);
+  std::list<int> multiply;
+  long signed carry = 0;
+
+  if (num1.empty() == true || num2.empty() == true) {
+    multiply.push_back(0);
+    return multiply;
   }
 
-  std::string myNum2;
-  for (int num: num2) {
-    myNum2 += std::to_string(num);
+  long signed digit2 = num2.front();
+
+  if (digit2 == 0) {
+    multiply.push_back(0);
+    return multiply;
   }
 
-  if (myNum1 == "0" || myNum2 == "0") {
-    product.push_back(0);
-    return product;
+  for (long signed digit1 : num1) {
+    //int digit1 = *it1;
+    long signed product = digit1*digit2 + carry;
+    carry = product/10;
+    multiply.push_front(product %10);
   }
 
-  int len1 = num1.size();
-  int len2 = num2.size();
-
-  std::string res(len1 + len2, 0);
-
-  // int i_n1 = 0;
-  // int i_n2 =0;
-
-  for (int i=len1-1;i>=0;i--) {
-    // int carry = 0;
-    // int n1 = myNum1[i] - '0';
-    // i_n2=0;
-    for (int j = len2-1; j>=0;j--) {
-      int n = (myNum1[i] - '0') * (myNum2[j] - '0') + res[i+j+1];
-      res[i+j+1] = n%10;
-      res[i+j] += n/10;
-
-      // int sum = n1*n2 + res[i_n1 +i_n2] + carry;
-      // carry = sum/10;
-      // res[i_n1 + i_n2] = sum%10;
-      // i_n2++;
+  while (carry > 0) {
+    multiply.push_back(carry % 10);
+    carry = carry/10;
     }
-  }
-  for (int i =0; i< res.size();i++) {
-    res[i] += '0';
-  }
 
-  if (res[0] == '0') {
-    res.substr(1);
-    product = buildBigNum(res);
-    return product;
+  while (multiply.empty() != false && multiply.front() == 0) {
+    multiply.pop_front();
   }
 
-  return product;
+  if (multiply.empty()) {
+    multiply.push_back(0);
+  }
 
-  // std::list<int> multiply;
-  // int carry = 0;
+  return multiply;
 
-  // if (num1.empty() == true || num2.empty() == true) {
-  //   multiply.push_back(0);
-  //   return multiply;
+  // std::list<int> product;
+
+  // std::string myNum1;
+  // for (int num :num1) {
+  //   myNum1 += std::to_string(num);
   // }
 
-  // int digit2 = num2.front();
-
-  // if (digit2 == 0) {
-  //   multiply.push_back(0);
-  //   return multiply;
+  // std::string myNum2;
+  // for (int num: num2) {
+  //   myNum2 += std::to_string(num);
   // }
 
-  // for (int digit1 : num1) {
-  //   // int digit1 = *it1;
-  //   int product = digit1 * digit2 + carry;
-  //   carry = product / 10;
-  //   multiply.push_front(product % 10);
+  // if (myNum1 == "0" || myNum2 == "0") {
+  //   product.push_back(0);
+  //   return product;
   // }
 
-  // while (carry > 0) {
-  //   multiply.push_back(carry % 10);
-  //   carry = carry / 10;
+  // int len1 = num1.size();
+  // int len2 = num2.size();
+
+  // std::string res(len1 + len2, 0);
+
+  // // int i_n1 = 0;
+  // // int i_n2 =0;
+
+  // for (int i=len1-1;i>=0;i--) {
+  //   // int carry = 0;
+  //   // int n1 = myNum1[i] - '0';
+  //   // i_n2=0;
+  //   for (int j = len2-1; j>=0;j--) {
+  //     int n = (myNum1[i] - '0') * (myNum2[j] - '0') + res[i+j+1];
+  //     res[i+j+1] = n%10;
+  //     res[i+j] += n/10;
+
+  //     // int sum = n1*n2 + res[i_n1 +i_n2] + carry;
+  //     // carry = sum/10;
+  //     // res[i_n1 + i_n2] = sum%10;
+  //     // i_n2++;
+  //   }
+  // }
+  // for (int i =0; i< res.size();i++) {
+  //   res[i] += '0';
   // }
 
-  // while (multiply.empty() != false && multiply.front() == 0) {
-  //   multiply.pop_front();
+  // if (res[0] == '0') {
+  //   res.substr(1);
+  //   product = buildBigNum(res);
+  //   return product;
   // }
 
-  // if (multiply.empty()) {
-  //   multiply.push_back(0);
-  // }
+  // return product;
 
-  // return multiply;
 }
 
 BigNumCalc::~BigNumCalc() {}
