@@ -127,83 +127,112 @@ std::list<int> BigNumCalc::sub(std::list<int> num1, std::list<int> num2) {
 
 std::list<int> BigNumCalc::mul(std::list<int> num1, std::list<int> num2) {
 
-  std::list<int> multiply;
-  long signed carry = 0;
+  // std::list<int> multiply;
+  // long signed carry = 0;
 
-  if (num1.empty() == true || num2.empty() == true) {
-    multiply.push_back(0);
-    return multiply;
-  }
-
-  long signed digit2 = num2.front();
-
-  if (digit2 == 0) {
-    multiply.push_back(0);
-    return multiply;
-  }
-
-  for (long signed digit1 : num1) {
-    //int digit1 = *it1;
-    long signed product = digit1*digit2 + carry;
-    carry = product/10;
-    multiply.push_front(product %10);
-  }
-
-  while (carry > 0) {
-    multiply.push_back(carry % 10);
-    carry = carry/10;
-    }
-
-  while (multiply.empty() != false && multiply.front() == 0) {
-    multiply.pop_front();
-  }
-
-  if (multiply.empty()) {
-    multiply.push_back(0);
-  }
-
-  return multiply;
-
-  // std::list<int> product;
-
-  // std::string myNum1;
-  // for (int num :num1) {
-  //   myNum1 += std::to_string(num);
+  // if (num1.empty() == true || num2.empty() == true) {
+  //   multiply.push_back(0);
+  //   return multiply;
   // }
 
-  // std::string myNum2;
-  // for (int num: num2) {
-  //   myNum2 += std::to_string(num);
+  // long signed digit2 = num2.front();
+
+  // if (digit2 == 0) {
+  //   multiply.push_back(0);
+  //   return multiply;
   // }
 
-  // if (myNum1 == "0" || myNum2 == "0") {
-  //   product.push_back(0);
-  //   return product;
+  // for (long signed digit1 : num1) {
+  //   //int digit1 = *it1;
+  //   long signed product = digit1*digit2 + carry;
+  //   carry = product/10;
+  //   multiply.push_front(product %10);
   // }
 
-  // int len1 = num1.size();
-  // int len2 = num2.size();
-
-  // std::string res(len1 + len2, 0);
-
-  // // int i_n1 = 0;
-  // // int i_n2 =0;
-
-  // for (int i=len1-1;i>=0;i--) {
-  //   // int carry = 0;
-  //   // int n1 = myNum1[i] - '0';
-  //   // i_n2=0;
-  //   for (int j = len2-1; j>=0;j--) {
-  //     int n = (myNum1[i] - '0') * (myNum2[j] - '0') + res[i+j+1];
-  //     res[i+j+1] = n%10;
-  //     res[i+j] += n/10;
-
-  //     // int sum = n1*n2 + res[i_n1 +i_n2] + carry;
-  //     // carry = sum/10;
-  //     // res[i_n1 + i_n2] = sum%10;
-  //     // i_n2++;
+  // while (carry > 0) {
+  //   multiply.push_back(carry % 10);
+  //   carry = carry/10;
   //   }
+
+  // while (multiply.empty() != false && multiply.front() == 0) {
+  //   multiply.pop_front();
   // }
+
+  // if (multiply.empty()) {
+  //   multiply.push_back(0);
+  // }
+
+  // return multiply;
+
+  std::list<int> product;
+
+  std::string myNum1;
+  for (int num :num1) {
+    myNum1 += std::to_string(num);
+  }
+
+  std::string myNum2;
+  for (int num: num2) {
+    myNum2 += std::to_string(num);
+  }
+
+  int len1 = myNum1.size();
+  int len2 = myNum2.size();
+
+  if (len1 == 0 || len2 == 0) {
+    product.push_back(0);
+    return product;
+  }
+
+  std::vector<int> res(len1 + len2, 0);
+
+  int i_n1 = 0;
+  int i_n2 =0;
+
+  for (int i=len1-1;i>=0;i--) {
+    int carry = 0;
+    int n1 = myNum1[i] - '0';
+    i_n2=0;
+    for (int j = len2-1; j>=0;j--) {
+      // int n = (myNum1[i] - '0') * (myNum2[j] - '0') + res[i+j+1];
+      // res[i+j+1] = n%10;
+      // res[i+j] += n/10;
+
+      // int sum = n1*n2 + res[i_n1 +i_n2] + carry;
+      // carry = sum/10;
+      // res[i_n1 + i_n2] = sum%10;
+      // i_n2++;
+      int n2 = myNum2[j] - '0';
+      int sum = n1*n2 + res[i_n1 +i_n2] + carry;
+      carry = sum/10;
+      res[i_n1 + i_n2] = sum%10;
+      i_n2++;
+    }
+    if (carry >0) {
+      res[i_n1 + i_n2] += carry;
+    }
+    i_n1++;
+  }
+
+  int i = res.size() -1;
+  while (i>= 0 && res[i] == 0){
+    i--;
+  }
+
+  if (i == -1) {
+    product.push_back(0);
+    return product;
+  }
+
+  std::string mul = "";
+  while (i>=0) {
+    mul += std::to_string(res[i--]);
+  }
+
+  product = buildBigNum(mul);
+  return product;
+
+
   // for (int i =0; i< res.size();i++) {
   //   res[i] += '0';
   // }
@@ -213,9 +242,6 @@ std::list<int> BigNumCalc::mul(std::list<int> num1, std::list<int> num2) {
   //   product = buildBigNum(res);
   //   return product;
   // }
-
-  // return product;
-
 }
 
 BigNumCalc::~BigNumCalc() {}
