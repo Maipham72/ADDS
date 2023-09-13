@@ -35,7 +35,7 @@ void LinkedList::printList() {
 
 
 bool LinkedList::swap(int pos1, int pos2) {
-    if (pos1 > count || pos2 > count || pos1 < 0 || pos2 < 0) {
+    if (pos1 > count -1 || pos2 > count - 1 || pos1 < 0 || pos2 < 0) {
         return false;
     }
     Node* currNode = head;
