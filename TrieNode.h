@@ -11,6 +11,7 @@ class TrieNode
 
   bool isEndOfWord;
   TrieNode* children[26];
+  int routerNumber;
 
   // void insert(TrieNode* root, std::string word);
 
