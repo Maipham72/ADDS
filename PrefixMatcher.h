@@ -8,10 +8,7 @@ class PrefixMatcher: public TrieNode {
 
   public:
   PrefixMatcher();
-  bool foundRouter;
-
   int selectRouter(std::string networkAddress);
-
   void insert(std::string address, int rounterNumber);
 };
 

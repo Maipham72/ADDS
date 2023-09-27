@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <unordered_map>
 
 class TrieNode
 {
@@ -12,6 +13,8 @@ class TrieNode
   bool isEndOfWord;
   TrieNode* children[26];
   int routerNumber;
+
+  //std::vector<std::string> child;
 
   // void insert(TrieNode* root, std::string word);
 

@@ -7,7 +7,7 @@ class Autocomplete : public TrieNode {
   private:
   TrieNode* root;
 
-  void suggestionHelper(TrieNode* root, std::string partialWord, std::vector<std::string> suggestion, std::string currentWord);
+  void suggestionHelper(TrieNode* node,const std::string& partialWord, std::vector<std::string>& result, std::string currentWord);
 
   void insertWord(TrieNode* root, std::string word);
 
