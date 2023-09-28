@@ -6,6 +6,7 @@ TrieNode::TrieNode() {
       children[i] = nullptr;
   }
   isEndOfWord = false;
+  routerNumber = -1;
 };
 
 

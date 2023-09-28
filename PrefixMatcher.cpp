@@ -1,22 +1,23 @@
 #include "PrefixMatcher.h"
 
-#include <algorithm>
+PrefixMatcher::PrefixMatcher() {    
+  root = new TrieNode(); 
+}
 
-PrefixMatcher::PrefixMatcher() { root = new TrieNode(); }
 
 void PrefixMatcher::insert(std::string address, int routerNumber) {
   TrieNode* current = root;
 
-  for (char c: address) {
-    int index = c - '0';
-    if (current->children[index] == NULL) {
-      TrieNode* newNode = new TrieNode();
-      current->children[c] = newNode;
-    }
-    current = current->children[c];
+  for (char num: address) {
+    int index = num - '0';
+    if (current->child[index] == nullptr) {
+      current->child[index] = new TrieNode();
+      }
+    current = current->child[index];
   }
   current->routerNumber = routerNumber;
 }
+
 
 int PrefixMatcher::selectRouter(std::string networkAddress) {
   TrieNode* current = root;
@@ -24,14 +25,18 @@ int PrefixMatcher::selectRouter(std::string networkAddress) {
 
   for (char c: networkAddress) {
     int index = c - '0';
-    if (current->children[index]) {
-      current = current->children[c];
-      if (current->routerNumber != -1) {
-        lastMatch = current->routerNumber; 
+    if (current->routerNumber != -1) {
+      lastMatch = current->routerNumber;
+    }
+    if (current->child[index] != nullptr) {
+        current = current->child[index];
       } else {
           break;
       }
     }
-  }
-  return lastMatch;
+    if (current->routerNumber != -1) {
+      lastMatch = current->routerNumber;
+    }
+
+    return lastMatch;
 }

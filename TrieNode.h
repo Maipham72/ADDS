@@ -12,7 +12,11 @@ class TrieNode
 
   bool isEndOfWord;
   TrieNode* children[26];
+
+  std::unordered_map<char, TrieNode*> child;
   int routerNumber;
+
+
 
   //std::vector<std::string> child;
 
