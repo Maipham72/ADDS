@@ -62,8 +62,8 @@ void Heap<T>::insert(T value) {
    if (size == 0) {
     values.push_back(value);
    } else {
-    values.push_back(values);
-    for (int i = size/2 -1. i >= 0; i--) {
+    values.push_back(value);
+    for (int i = size/2 - 1; i >= 0; i--) {
       heapify(i);
     }
    }
@@ -83,7 +83,10 @@ void Heap<T>::remove(T value) {
   } 
 
   int removed = std::distance(values.begin(), index);
-  int last = values.size() - 1;
+  int last_index = values.size() - 1;
+
+  values.at(removed) = values.at(last_index);
+  values.pop_back();
 
   heapify(removed);
 }
@@ -96,7 +99,7 @@ template <typename T>
 T Heap<T>::getMin() {
   // TO BE IMPLEMENTED
   if (values.size() == 0) {
-    return NULL;
+    return 0;
   } else {
     return values.at(0);
   }
