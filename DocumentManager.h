@@ -10,12 +10,12 @@ class DocumentManager {
 
   std::unordered_map<int, int> limits; //store ID and limits
 
-  std::vector<int> patrons; //store patrons
+  std::vector<int> patrons; //store patrons, inserting O(1)
 
-  std::unordered_map<int, std::string> nameIDs; //store document name and id
+  std::unordered_map<int, std::string> nameIDs; //store document name and id 
 
-  std::vector<int> ids;
-  std::vector<int> copies;
+  std::vector<int> ids; //inserting O(1)
+  std::vector<int> copies; //inserting O(1)
 
   public:
   
